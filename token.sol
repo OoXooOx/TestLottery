@@ -928,7 +928,7 @@ abstract contract ERC20Permit is ERC20, IERC20Permit, EIP712, Nonces {
 }
 
 contract Test is ERC20, ERC20Permit {
-    // keccak256("Claim(address winner,uint256 value,uint256 nonce,uint256 deadline)");
+    // keccak256("Claim(address winner,uint256 value, uint256 nonce)");
     bytes32 public constant CLAIM_TYPEHASH = 0xee15fd60c50663533091cf4668b36005f1a41ec3027db1e2394fb4be5c40d9e9;
     uint public maxSupply = 1000000*10**decimals();
     uint public lastTransfer; 
@@ -983,4 +983,5 @@ contract Test is ERC20, ERC20Permit {
     function getRewardsForTime() view internal returns (uint reward) {
         reward = (block.timestamp-lastTransfer)*10**decimals();
     }
+
 }
